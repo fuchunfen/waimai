@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import {addTodo} from '../actions/tabAction'
 
-import BottomBar from '../BottomBar/BottomBar.jsx'
+import BottomBar from '../BottomBar/BottomBar'
 
 class Main extends React.Component{
 

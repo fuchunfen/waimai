@@ -52,6 +52,9 @@ module.exports = {
   devServer: {
     contentBase: devPath
   },
+  resolve: {
+    extensions: ['.js','.jsx']
+  },
   entry: entryMap,
   output: {
     path: devPath,
@@ -59,9 +62,14 @@ module.exports = {
   },
   module: {
     rules: [
-      {test: /\.(js|jsx)$/, use: [{loader:'babel-loader'}],include:srcRoot},
+      {test: /\.(js|jsx)$/, use: [{loader:'babel-loader'},{loader: 'eslint-loader'}],include:srcRoot},
       {test: /\.css$/, use: ['style-loader', 'css-loader'], include: srcRoot},
-      {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'], include: srcRoot},
+      {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader',{
+        loader:'sass-resources-loader',
+          options: {
+          resources: srcRoot + '/component/common.scss'
+          }
+        }], include: srcRoot},
       {test: /\.(png|jpg|jpeg)/, use: ['url-loader?limit=8192'], include: srcRoot}
     ]
   },
