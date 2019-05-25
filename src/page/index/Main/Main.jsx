@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import {addTodo} from '../actions/tabAction'
 
 import BottomBar from '../BottomBar/BottomBar'
+import Header from "../Home/Header/Header";
 
 class Main extends React.Component{
 
@@ -21,7 +22,10 @@ class Main extends React.Component{
 
   render() {
     return (
-      <BottomBar/>
+      <div>
+        <Header/>
+        <BottomBar/>
+      </div>
     )
   }
 
